@@ -1,16 +1,5 @@
-# Neural Grader Dashboard
+# Neural Grader App
 
-A comprehensive AI-powered lumber grading and quality control system that provides real-time monitoring, batch management, and automated defect detection for lumber processing facilities.
-
-## 🎯 Purpose
-
-The Neural Grader Dashboard is designed to:
-- **Automate lumber grading** using AI-powered defect detection
-- **Monitor production lines** in real-time with camera feeds
-- **Manage orders and batches** throughout the production process
-- **Track quality metrics** and generate performance reports
-- **Handle warranty claims** and customer feedback
-- **Schedule shifts** and manage user permissions
 
 ## 🚀 Quick Start
 
@@ -76,12 +65,6 @@ neural-grader-dashboard/
 - **Claims System** - Customer warranty claims and resolution tracking
 - **User Management** - Role-based access control and user administration
 
-### Data Flow
-1. **Orders** are created and scheduled for production
-2. **Boards** are scanned and graded using AI detection
-3. **Defects** are identified, marked, and tracked
-4. **Quality metrics** are calculated and reported
-5. **Claims** can be filed and tracked through resolution
 
 ## 🔧 Configuration
 
@@ -182,17 +165,6 @@ export function ComponentName({ prop1, prop2 }: ComponentProps) {
 - Utilities: `kebab-case.ts`
 - Pages: `kebab-case/page.tsx`
 
-## 📞 Support
-
-For questions about the codebase or architecture decisions, refer to:
-- Component documentation in individual files
-- Type definitions in `/types` directory
-- Sample data in `/data` directory
-
----
-
-**Last Updated**: December 2024
-**Version**: 1.0.0
 \`\`\`
 
 Now let me refactor the main dashboard shell component for better maintainability:

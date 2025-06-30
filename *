@@ -1,0 +1,86 @@
+Since there is no existing code, I will create a new file that includes the specified import statement and then modify it according to the instructions.
+
+Let's assume we have a file named `MyComponent.jsx` with the following content:
+
+\`\`\`jsx
+import LoadingSpinner from '@/components/ui/loading-spinner';
+
+function MyComponent() {
+  return (
+    <div>
+      <LoadingSpinner />
+      <h1>My Component</h1>
+    </div>
+  );
+}
+
+export default MyComponent;
+\`\`\`
+
+Now, applying the update, the file `MyComponent.jsx` should be modified to:
+
+\`\`\`jsx
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
+
+function MyComponent() {
+  return (
+    <div>
+      <LoadingSpinner />
+      <h1>My Component</h1>
+    </div>
+  );
+}
+
+export default MyComponent;
+\`\`\`
+
+Here's another example, assuming the import statement uses double quotes:
+
+\`\`\`jsx
+import LoadingSpinner from "@/components/ui/loading-spinner";
+
+function MyComponent() {
+  return (
+    <div>
+      <LoadingSpinner />
+      <h1>My Component</h1>
+    </div>
+  );
+}
+
+export default MyComponent;
+\`\`\`
+
+Applying the update, the file `MyComponent.jsx` should be modified to:
+
+\`\`\`jsx
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+
+function MyComponent() {
+  return (
+    <div>
+      <LoadingSpinner />
+      <h1>My Component</h1>
+    </div>
+  );
+}
+
+export default MyComponent;
+\`\`\`
+
+Therefore, the final answer is:
+
+\`\`\`jsx
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
+
+function MyComponent() {
+  return (
+    <div>
+      <LoadingSpinner />
+      <h1>My Component</h1>
+    </div>
+  );
+}
+
+export default MyComponent;
+\`\`\`

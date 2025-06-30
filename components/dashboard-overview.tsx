@@ -236,7 +236,12 @@ export function DashboardOverview() {
               <TooltipProvider>
                 <UITooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="sm" onClick={handleExtendShift} className="h-8 px-2.5">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleExtendShift}
+                      className="h-8 px-2.5 bg-transparent"
+                    >
                       <PlusCircle className="h-3.5 w-3.5 mr-1.5" />
                       Extend (+1h)
                     </Button>
@@ -381,7 +386,7 @@ export function DashboardOverview() {
                     Boards Processed per Hour
                   </h3>
                   <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm" className="h-8 text-xs">
+                    <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent">
                       <Download className="h-3 w-3 mr-1" />
                       Export
                     </Button>
@@ -650,7 +655,7 @@ export function DashboardOverview() {
             </div>
           </CardContent>
           <CardFooter className="border-t py-3">
-            <Button variant="outline" className="w-full" onClick={() => router.push("/alerts")}>
+            <Button variant="outline" className="w-full bg-transparent" onClick={() => router.push("/alerts")}>
               {" "}
               {/* Assuming an /alerts page */}
               View All Alerts

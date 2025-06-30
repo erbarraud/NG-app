@@ -1,38 +1,30 @@
+"use client"
+
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 
-/**
- * Application-wide footer component.
- *
- * Displays copyright information, the current app version, and essential links.
- * Designed to be compact, on-brand, and responsive.
- */
 export function Footer() {
-  const currentYear = new Date().getFullYear()
-  // This environment variable is automatically available in Next.js builds
-  const appVersion = process.env.npm_package_version || "1.0.0"
-
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
-        <div className="text-xs text-muted-foreground sm:text-sm">
-          <p>
-            &copy; {currentYear} Neural Grader. All rights reserved.
-            <span className="hidden sm:inline"> &middot; v{appVersion}</span>
-          </p>
+    <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+              © 2024 Neural Grader. Built for precision lumber grading.
+            </p>
+          </div>
+          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+            <Link href="/terms" className="hover:text-foreground transition-colors">
+              Terms
+            </Link>
+            <Separator orientation="vertical" className="h-4" />
+            <Link href="/privacy" className="hover:text-foreground transition-colors">
+              Privacy
+            </Link>
+            <Separator orientation="vertical" className="h-4" />
+            <span>v1.0.0</span>
+          </div>
         </div>
-        <nav className="flex items-center gap-3 sm:gap-4">
-          <Link href="/terms" className="text-xs text-muted-foreground transition-colors hover:text-primary sm:text-sm">
-            Terms
-          </Link>
-          <Separator orientation="vertical" className="h-4" />
-          <Link
-            href="/privacy"
-            className="text-xs text-muted-foreground transition-colors hover:text-primary sm:text-sm"
-          >
-            Privacy
-          </Link>
-        </nav>
       </div>
     </footer>
   )

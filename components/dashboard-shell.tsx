@@ -36,7 +36,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Footer } from "@/components/footer" // Import the new Footer component
+import { Footer } from "@/components/footer"
 
 // Types
 interface NavItem {

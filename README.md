@@ -166,5 +166,3 @@ export function ComponentName({ prop1, prop2 }: ComponentProps) {
 - Pages: `kebab-case/page.tsx`
 
 \`\`\`
-
-Now let me refactor the main dashboard shell component for better maintainability:

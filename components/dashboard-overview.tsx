@@ -11,16 +11,15 @@ import {
   ChevronRight,
   FileText,
   MoreHorizontal,
-  Activity,
   Pause,
   Square,
   X,
   RefreshCw,
   Download,
-  BarChart3,
   DollarSign,
   Layers,
   PlusCircle,
+  MessageSquare,
 } from "lucide-react"
 import {
   BarChart,
@@ -70,12 +69,6 @@ interface KPIData {
     trend: number
     sparklineData: { value: number }[]
   }
-  aiOverrideRate: {
-    current: number
-    trend: number
-    overriddenCount: number
-    totalCount: number
-  }
   gradeMetrics: {
     totalGrades: number
     averageGrade: string
@@ -83,6 +76,12 @@ interface KPIData {
     lowestGrade: string
     efficiency: number
     gradeDistribution: { grade: string; count: number; percentage: number }[]
+  }
+  feedbackSubmitted: {
+    count: number
+    trend: number
+    sparklineData: { value: number }[]
+    totalBoardsProcessed: number
   }
 }
 
@@ -152,12 +151,6 @@ function generateKPIData(): KPIData {
         value: 30 + Math.random() * 15 + i * 0.8,
       })),
     },
-    aiOverrideRate: {
-      current: 3.2,
-      trend: -0.8,
-      overriddenCount: 83,
-      totalCount: 2594,
-    },
     gradeMetrics: {
       totalGrades: 2847,
       averageGrade: "Select",
@@ -172,6 +165,14 @@ function generateKPIData(): KPIData {
         { grade: "#3", count: 142, percentage: 5.0 },
         { grade: "Economy", count: 58, percentage: 2.0 },
       ],
+    },
+    feedbackSubmitted: {
+      count: Math.floor(Math.random() * 120) + 30, // e.g., 30-150 feedbacks
+      trend: Number.parseFloat((Math.random() * 10 - 5).toFixed(1)), // e.g., -5.0% to +5.0%
+      sparklineData: Array.from({ length: 7 }, (_, i) => ({
+        value: 40 + Math.random() * 80 + i * (Math.random() * 6 - 3),
+      })),
+      totalBoardsProcessed: 2594, // Example total
     },
   }
 }
@@ -224,14 +225,11 @@ export function DashboardOverview() {
       <Card className="overflow-hidden border shadow-sm">
         <CardHeader className="py-4 px-6 border-b">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                <BarChart3 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-              </div>
-              <div>
-                <CardTitle className="text-lg">Daily Overview</CardTitle>
-                <CardDescription>Real-time performance metrics and grade distribution</CardDescription>
-              </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">Neural Grader Dashboard</h1>
+              <p className="text-sm text-muted-foreground">
+                Monitor lumber grading operations, track performance, and manage quality control
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <ShiftStatusDisplay />
@@ -322,10 +320,10 @@ export function DashboardOverview() {
                   <div className="p-4 hover:bg-slate-100/80 dark:hover:bg-slate-800/30 transition-colors">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <div className="p-1.5 bg-amber-100 dark:bg-amber-900/50 rounded-md">
-                          <Activity className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                        <div className="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded-md">
+                          <MessageSquare className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                         </div>
-                        <span className="font-medium text-sm">AI Override Rate</span>
+                        <span className="font-medium text-sm">Feedback Submitted</span>
                       </div>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -334,27 +332,42 @@ export function DashboardOverview() {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => router.push("/board-finder?filter=overridden")}>
-                            View Overridden Boards
-                          </DropdownMenuItem>
+                          <DropdownMenuItem>View Feedback History</DropdownMenuItem>
                           <DropdownMenuItem>Download Report</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
                     <div className="flex items-end justify-between">
-                      <div className="text-2xl font-bold text-amber-600 dark:text-amber-500">
-                        {kpiData.aiOverrideRate.current}%
+                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-500">
+                        {kpiData.feedbackSubmitted.count}
                       </div>
                       <div className="flex items-center">
-                        <ArrowDown className="h-4 w-4 text-emerald-500 mr-1" />
-                        <span className="text-sm font-medium text-emerald-600">
-                          {Math.abs(kpiData.aiOverrideRate.trend)}% improvement
+                        {kpiData.feedbackSubmitted.trend !== 0 &&
+                          (kpiData.feedbackSubmitted.trend > 0 ? (
+                            <ArrowUp className="h-4 w-4 text-emerald-500 mr-1" />
+                          ) : (
+                            <ArrowDown className="h-4 w-4 text-red-500 mr-1" />
+                          ))}
+                        <span
+                          className={`text-sm font-medium ${
+                            kpiData.feedbackSubmitted.trend > 0
+                              ? "text-emerald-600"
+                              : kpiData.feedbackSubmitted.trend < 0
+                                ? "text-red-600"
+                                : "text-slate-500"
+                          }`}
+                        >
+                          {Math.abs(kpiData.feedbackSubmitted.trend)}%
+                          {kpiData.feedbackSubmitted.trend !== 0
+                            ? kpiData.feedbackSubmitted.trend > 0
+                              ? " increase"
+                              : " decrease"
+                            : " no change"}
                         </span>
                       </div>
                     </div>
                     <div className="text-xs text-muted-foreground mt-1">
-                      {kpiData.aiOverrideRate.overriddenCount} of {kpiData.aiOverrideRate.totalCount.toLocaleString()}{" "}
-                      boards
+                      {kpiData.feedbackSubmitted.count} feedback entries
                     </div>
                   </div>
                 </div>

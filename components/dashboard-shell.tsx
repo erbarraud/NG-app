@@ -36,6 +36,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Footer } from "@/components/footer" // Import the new Footer component
 
 // Types
 interface NavItem {
@@ -331,9 +332,12 @@ export function DashboardShell({ children }: DashboardShellProps) {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto bg-slate-50/50 dark:bg-slate-900/50">
         <div className="container mx-auto p-4 sm:p-6">{children}</div>
       </main>
+
+      {/* Application Footer */}
+      <Footer />
     </div>
   )
 }

@@ -10,7 +10,6 @@ import {
   AlertTriangle,
   CheckCircle,
   Lightbulb,
-  Clock,
   RefreshCw,
   PowerIcon,
   Wind,
@@ -18,12 +17,8 @@ import {
   ChevronDown,
   ImageIcon,
   Zap,
-  Layers,
-  Leaf,
-  BarChart3,
 } from "lucide-react"
 import CameraCard from "./camera-card" // Ensure this path is correct
-import { ShiftStatusDisplay } from "@/components/shift-status-display"
 
 // Define types for camera and row data
 export interface CameraType {
@@ -340,42 +335,6 @@ export function LineCheckDashboard() {
         </CardContent>
       </Card>
 
-      {/* Current Batch Information & Shift Status */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card>
-          <CardContent className="p-3">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-              <div className="flex items-center">
-                <Layers className="h-4 w-4 mr-2 text-primary" />
-                <span className="font-medium text-sm">Batch:</span>
-                <Badge variant="outline" className="ml-2 bg-primary/10 text-primary">
-                  {currentBatchData.batchId}
-                </Badge>
-              </div>
-              <div className="flex items-center">
-                <Leaf className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">{currentBatchData.species}</span>
-              </div>
-              <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">{currentBatchData.startTime}</span>
-              </div>
-              <div className="flex items-center">
-                <BarChart3 className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">
-                  {currentBatchData.processedVolume} / {currentBatchData.totalVolume}
-                </span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-3">
-            <ShiftStatusDisplay variant="compact" showHeader={false} />
-          </CardContent>
-        </Card>
-      </div>
-
       {/* Main Content: Camera Rows Accordion */}
       <Accordion
         type="multiple"
@@ -461,23 +420,6 @@ export function LineCheckDashboard() {
           )
         })}
       </Accordion>
-
-      {/* Footer */}
-      <div className="flex items-center justify-between text-sm text-muted-foreground border-t pt-4 mt-4">
-        <div className="flex items-center">
-          <div className="flex items-center mr-6">
-            <div
-              className={`h-2 w-2 rounded-full ${allCamerasConnected && allStreamsHealthy ? "bg-green-500" : "bg-yellow-500"} mr-2`}
-            ></div>
-            <span>System {allCamerasConnected && allStreamsHealthy ? "Operational" : "Needs Attention"}</span>
-          </div>
-          <div className="flex items-center">
-            <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? "animate-spin" : ""}`} />
-            <span>Auto-refreshing</span>
-          </div>
-        </div>
-        <div>Neural Grader Line Check v2.5.3</div>
-      </div>
     </div>
   )
 }

@@ -1,0 +1,18 @@
+<template>
+  <div id="app" class="min-h-screen bg-background font-sans antialiased">
+    <router-view />
+  </div>
+</template>
+
+<script setup>
+import { provide } from 'vue'
+import { useTheme } from './composables/useTheme'
+
+// Initialize theme
+const { theme, toggleTheme } = useTheme()
+provide('theme', { theme, toggleTheme })
+</script>
+
+<style>
+@import './assets/globals.css';
+</style>

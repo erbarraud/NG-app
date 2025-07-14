@@ -1,14 +1,13 @@
-const { fontFamily } = require("tailwindcss/defaultTheme")
+const animate = require("tailwindcss-animate")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx,vue}",
-    "./components/**/*.{ts,tsx,vue}",
-    "./app/**/*.{ts,tsx,vue}",
-    "./src/**/*.{ts,tsx,vue}",
-    "./index.html",
+    "./pages/**/*.{js,jsx,vue}",
+    "./components/**/*.{js,jsx,vue}",
+    "./app/**/*.{js,jsx,vue}",
+    "./src/**/*.{js,jsx,vue}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
@@ -61,17 +60,14 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
+          from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          to: { height: 0 },
         },
       },
       animation: {
@@ -80,5 +76,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 }

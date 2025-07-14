@@ -1,33 +1,34 @@
 <template>
-  <Card>
+  <Card class="h-full">
     <CardHeader>
       <CardTitle>System Alerts</CardTitle>
       <CardDescription>Recent system notifications and warnings.</CardDescription>
     </CardHeader>
-    <CardContent class="space-y-3">
-      <div v-for="alert in alerts" :key="alert.id" class="flex items-start space-x-3">
-        <component :is="alert.icon" :class="['h-5 w-5 mt-0.5', alert.color]" />
-        <div>
-          <p class="text-sm font-medium">{{ alert.message }}</p>
-          <p class="text-xs text-muted-foreground">{{ alert.time }}</p>
-        </div>
-      </div>
+    <CardContent>
+      <ul class="space-y-4">
+        <li v-for="alert in alerts" :key="alert.id" class="flex items-start">
+          <div class="p-2 rounded-full mr-4" :class="alert.type === 'error' ? 'bg-red-500/10' : 'bg-yellow-500/10'">
+            <component :is="alert.icon" class="h-5 w-5" :class="alert.type === 'error' ? 'text-red-400' : 'text-yellow-400'" />
+          </div>
+          <div>
+            <p class="font-medium text-sm">{{ alert.message }}</p>
+            <p class="text-xs text-muted-foreground">{{ alert.time }}</p>
+          </div>
+        </li>
+      </ul>
     </CardContent>
   </Card>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { AlertTriangle, CheckCircle, Info } from 'lucide-vue-next'
-import Card from '@/components/ui/Card.vue'
-import CardHeader from '@/components/ui/CardHeader.vue'
-import CardTitle from '@/components/ui/CardTitle.vue'
-import CardDescription from '@/components/ui/CardDescription.vue'
-import CardContent from '@/components/ui/CardContent.vue'
+import { ref } from 'vue';
+import { AlertTriangle, XCircle } from 'lucide-vue-next';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
 
 const alerts = ref([
-  { id: 1, icon: AlertTriangle, message: 'Scanner #3 requires calibration.', time: '2 min ago', color: 'text-yellow-500' },
-  { id: 2, icon: CheckCircle, message: 'Shift changeover complete.', time: '1 hour ago', color: 'text-green-500' },
-  { id: 3, icon: Info, message: 'Software update scheduled for 2am.', time: '3 hours ago', color: 'text-blue-500' },
-])
+  { id: 1, type: 'error', icon: XCircle, message: 'Camera #3 offline. No image feed.', time: '2 minutes ago' },
+  { id: 2, type: 'warning', icon: AlertTriangle, message: 'Line speed dropped to 150 boards/min.', time: '15 minutes ago' },
+  { id: 3, type: 'warning', icon: AlertTriangle, message: 'High defect rate detected for knots.', time: '45 minutes ago' },
+  { id: 4, type: 'error', icon: XCircle, message: 'Sorter connection lost.', time: '1 hour ago' },
+]);
 </script>

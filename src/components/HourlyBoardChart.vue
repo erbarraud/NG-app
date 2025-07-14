@@ -2,67 +2,81 @@
   <Card>
     <CardHeader>
       <CardTitle>Hourly Production</CardTitle>
-      <CardDescription>Boards graded per hour</CardDescription>
+      <CardDescription>Boards graded per hour over the last 12 hours.</CardDescription>
     </CardHeader>
     <CardContent>
-      <apexchart type="bar" height="300" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="area" height="180" :options="chartOptions" :series="series"></apexchart>
     </CardContent>
   </Card>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Card from '@/components/ui/Card.vue'
-import CardHeader from '@/components/ui/CardHeader.vue'
-import CardTitle from '@/components/ui/CardTitle.vue'
-import CardDescription from '@/components/ui/CardDescription.vue'
-import CardContent from '@/components/ui/CardContent.vue'
+import { ref } from 'vue';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
 
 const series = ref([{
-  name: 'Boards',
-  data: [2300, 2100, 2500, 2800, 2600, 2400, 2200, 2900]
-}])
+  name: 'Boards Graded',
+  data: [1200, 1250, 1100, 1380, 1500, 1420, 1600, 1550, 1480, 1620, 1700, 1850]
+}]);
 
 const chartOptions = ref({
   chart: {
-    type: 'bar',
-    height: 300,
+    type: 'area',
+    height: 180,
     toolbar: {
       show: false
-    }
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      endingShape: 'rounded'
     },
+    zoom: {
+      enabled: false
+    }
   },
   dataLabels: {
     enabled: false
   },
   stroke: {
-    show: true,
+    curve: 'smooth',
     width: 2,
-    colors: ['transparent']
-  },
-  xaxis: {
-    categories: ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm'],
-  },
-  yaxis: {
-    title: {
-      text: 'Boards'
-    }
   },
   fill: {
-    opacity: 1
+    type: 'gradient',
+    gradient: {
+      shadeIntensity: 1,
+      opacityFrom: 0.4,
+      opacityTo: 0.1,
+      stops: [0, 90, 100]
+    }
+  },
+  xaxis: {
+    categories: ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
+    labels: {
+      style: {
+        colors: '#888',
+        fontSize: '12px'
+      }
+    },
+    axisBorder: {
+      show: false
+    },
+    axisTicks: {
+      show: false
+    }
+  },
+  yaxis: {
+    labels: {
+      style: {
+        colors: '#888',
+        fontSize: '12px'
+      },
+      formatter: (val) => { return val.toFixed(0) }
+    }
+  },
+  grid: {
+    borderColor: 'hsl(var(--border))',
+    strokeDashArray: 3,
   },
   tooltip: {
-    y: {
-      formatter: function (val) {
-        return val + " boards"
-      }
-    }
-  }
-})
+    theme: 'dark'
+  },
+  colors: ["#fff"],
+});
 </script>

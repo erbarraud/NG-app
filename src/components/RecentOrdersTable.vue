@@ -1,8 +1,8 @@
 <template>
-  <Card class="lg:col-span-2">
+  <Card>
     <CardHeader>
       <CardTitle>Recent Orders</CardTitle>
-      <CardDescription>A summary of the most recent production orders.</CardDescription>
+      <CardDescription>A list of the most recent production orders.</CardDescription>
     </CardHeader>
     <CardContent>
       <Table>
@@ -11,7 +11,7 @@
             <TableHead>Order ID</TableHead>
             <TableHead>Customer</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Quantity</TableHead>
+            <TableHead class="text-right">Quantity</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -19,9 +19,11 @@
             <TableCell class="font-medium">{{ order.id }}</TableCell>
             <TableCell>{{ order.customer }}</TableCell>
             <TableCell>
-              <Badge :variant="getStatusVariant(order.status)">{{ order.status }}</Badge>
+              <Badge :variant="order.status === 'Completed' ? 'default' : (order.status === 'In Progress' ? 'secondary' : 'destructive')">
+                {{ order.status }}
+              </Badge>
             </TableCell>
-            <TableCell>{{ order.quantity }}</TableCell>
+            <TableCell class="text-right">{{ order.quantity }}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -30,30 +32,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Card from '@/components/ui/Card.vue'
-import CardHeader from '@/components/ui/CardHeader.vue'
-import CardTitle from '@/components/ui/CardTitle.vue'
-import CardDescription from '@/components/ui/CardDescription.vue'
-import CardContent from '@/components/ui/CardContent.vue'
-import Table from '@/components/ui/Table.vue'
-import TableHeader from '@/components/ui/TableHeader.vue'
-import TableBody from '@/components/ui/TableBody.vue'
-import TableRow from '@/components/ui/TableRow.vue'
-import TableHead from '@/components/ui/TableHead.vue'
-import TableCell from '@/components/ui/TableCell.vue'
+import { ref } from 'vue';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table'
 import Badge from '@/components/ui/Badge.vue'
 
 const orders = ref([
-  { id: 'ORD-001', customer: 'Lumber Co.', status: 'Completed', quantity: 1200 },
-  { id: 'ORD-002', customer: 'Builders Inc.', status: 'In Progress', quantity: 800 },
-  { id: 'ORD-003', customer: 'Fine Woods', status: 'Pending', quantity: 2500 },
-  { id: 'ORD-004', customer: 'Lumber Co.', status: 'Completed', quantity: 1500 },
-])
-
-const getStatusVariant = (status) => {
-  if (status === 'Completed') return 'success'
-  if (status === 'In Progress') return 'warning'
-  return 'default'
-}
+  { id: '#ORD-2024-0012', customer: 'Lumber Co.', status: 'In Progress', quantity: 12000 },
+  { id: '#ORD-2024-0011', customer: 'BuildMart', status: 'Completed', quantity: 8500 },
+  { id: '#ORD-2024-0010', customer: 'Fine Woods Inc.', status: 'Completed', quantity: 25000 },
+  { id: '#ORD-2024-0009', customer: 'Lumber Co.', status: 'Completed', quantity: 15000 },
+]);
 </script>

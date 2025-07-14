@@ -15,7 +15,7 @@
       </div>
       <div class="flex justify-between items-center">
         <span class="text-muted-foreground">Uptime</span>
-        <span class="font-semibold text-green-500">98.7%</span>
+        <span class="font-semibold text-green-400">98.7%</span>
       </div>
       <div class="flex justify-between items-center">
         <span class="text-muted-foreground">Total Boards</span>
@@ -26,9 +26,5 @@
 </template>
 
 <script setup>
-import Card from '@/components/ui/Card.vue'
-import CardHeader from '@/components/ui/CardHeader.vue'
-import CardTitle from '@/components/ui/CardTitle.vue'
-import CardDescription from '@/components/ui/CardDescription.vue'
-import CardContent from '@/components/ui/CardContent.vue'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
 </script>

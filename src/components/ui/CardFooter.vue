@@ -1,7 +1,7 @@
 <template>
-  <div :class="cn('flex items-center p-6 pt-0', $attrs.class)">
-    <slot />
-  </div>
+ <div :class="cn('flex items-center p-6 pt-0', $attrs.class)">
+   <slot />
+ </div>
 </template>
 
 <script setup>

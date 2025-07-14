@@ -7,7 +7,6 @@ import VueApexCharts from "vue-apexcharts"
 const app = createApp(App)
 
 app.use(router)
-app.use(VueApexCharts)
-app.component("apexchart", VueApexCharts)
+app.use(VueApexCharts) // This correctly registers the apexchart component globally
 
 app.mount("#app")

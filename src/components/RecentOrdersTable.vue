@@ -1,79 +1,55 @@
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Recent Orders</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Order ID
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Customer
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Date
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Amount
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="order in orders" :key="order.id">
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{ order.id }}</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{ order.customer }}</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{ order.date }}</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${{ order.amount }}</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full" :class="statusClass(order.status)">
-                  {{ order.status }}
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </CardContent>
-  </Card>
+ <Card class="lg:col-span-2">
+   <CardHeader>
+     <CardTitle>Recent Orders</CardTitle>
+     <CardDescription>A summary of the most recent production orders.</CardDescription>
+   </CardHeader>
+   <CardContent>
+     <Table>
+       <TableHeader>
+         <TableRow>
+           <TableHead>Order ID</TableHead>
+           <TableHead>Customer</TableHead>
+           <TableHead>Status</TableHead>
+           <TableHead>Quantity</TableHead>
+         </TableRow>
+       </TableHeader>
+       <TableBody>
+         <TableRow v-for="order in orders" :key="order.id">
+           <TableCell class="font-medium">{{ order.id }}</TableCell>
+           <TableCell>{{ order.customer }}</TableCell>
+           <TableCell>
+             <Badge :variant="getStatusVariant(order.status)">{{ order.status }}</Badge>
+           </TableCell>
+           <TableCell>{{ order.quantity }}</TableCell>
+         </TableRow>
+       </TableBody>
+     </Table>
+   </CardContent>
+ </Card>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card.vue'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card.vue'
+import Table from '@/components/ui/Table.vue'
+import TableHeader from '@/components/ui/TableHeader.vue'
+import TableBody from '@/components/ui/TableBody.vue'
+import TableRow from '@/components/ui/TableRow.vue'
+import TableHead from '@/components/ui/TableHead.vue'
+import TableCell from '@/components/ui/TableCell.vue'
+import Badge from '@/components/ui/Badge.vue'
 
 const orders = ref([
-  { id: '1', customer: 'John Doe', date: '2023-10-26', amount: 120, status: 'Delivered' },
-  { id: '2', customer: 'Jane Smith', date: '2023-10-25', amount: 85, status: 'Pending' },
-  { id: '3', customer: 'Peter Jones', date: '2023-10-24', amount: 210, status: 'Shipped' },
-  { id: '4', customer: 'Alice Brown', date: '2023-10-23', amount: 55, status: 'Delivered' },
-  { id: '5', customer: 'Bob Williams', date: '2023-10-22', amount: 150, status: 'Pending' }
+ { id: 'ORD-001', customer: 'Lumber Co.', status: 'Completed', quantity: 1200 },
+ { id: 'ORD-002', customer: 'Builders Inc.', status: 'In Progress', quantity: 800 },
+ { id: 'ORD-003', customer: 'Fine Woods', status: 'Pending', quantity: 2500 },
+ { id: 'ORD-004', customer: 'Lumber Co.', status: 'Completed', quantity: 1500 },
 ])
 
-const statusClass = (status) => {
-  switch (status) {
-    case 'Delivered':
-      return 'bg-green-100 text-green-800'
-    case 'Pending':
-      return 'bg-yellow-100 text-yellow-800'
-    case 'Shipped':
-      return 'bg-blue-100 text-blue-800'
-    default:
-      return 'bg-gray-100 text-gray-800'
-  }
+const getStatusVariant = (status) => {
+ if (status === 'Completed') return 'success'
+ if (status === 'In Progress') return 'warning'
+ return 'default'
 }
 </script>

@@ -65,6 +65,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    font-family: sans-serif;
   }
 }
 

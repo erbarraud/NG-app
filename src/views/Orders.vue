@@ -1,8 +1,8 @@
 <template>
   <DashboardShell>
     <div class="p-4">
-      <h1 class="text-2xl font-bold">Integrations</h1>
-      <p class="mt-2 text-muted-foreground">Connect with other systems and services.</p>
+      <h1 class="text-2xl font-bold">Orders</h1>
+      <p class="mt-2 text-muted-foreground">Manage and view production orders.</p>
     </div>
   </DashboardShell>
 </template>

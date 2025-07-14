@@ -6,13 +6,9 @@
 
 <script setup>
 import { provide } from 'vue'
-import { useTheme } from './composables/useTheme'
+import { useTheme } from '@/composables/useTheme'
 
-// Initialize theme
+// Initialize and provide theme for the whole app
 const { theme, toggleTheme } = useTheme()
 provide('theme', { theme, toggleTheme })
 </script>
-
-<style>
-@import './assets/globals.css';
-</style>

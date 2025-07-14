@@ -1,6 +1,6 @@
 <template>
-  <HPopover class="relative">
-    <slot></slot>
+  <HPopover>
+    <slot />
   </HPopover>
 </template>
 

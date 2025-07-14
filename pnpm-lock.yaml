@@ -216,11 +216,14 @@ importers:
         specifier: latest
         version: 3.5.17(typescript@5.8.3)
       vue-apexcharts:
-        specifier: latest
+        specifier: ^1.6.2
         version: 1.7.0(apexcharts@3.49.1)(vue@3.5.17(typescript@5.8.3))
       vue-router:
         specifier: latest
         version: 4.5.1(vue@3.5.17(typescript@5.8.3))
+      vue3-apexcharts:
+        specifier: latest
+        version: 1.8.0(apexcharts@3.49.1)(vue@3.5.17(typescript@5.8.3))
       yaml:
         specifier: latest
         version: 2.8.0
@@ -2960,6 +2963,12 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
+  vue3-apexcharts@1.8.0:
+    resolution: {integrity: sha512-5tSD4mXTBbIJ9ir+58qHE6oNtIe0RNgqIRYMKpcsIaxkKtwUww4JhvPkpUFlmiW4OJbbdklgjleXq1lfcM4gdA==}
+    peerDependencies:
+      apexcharts: '>=4.0.0'
+      vue: '>=3.0.0'
+
   vue@3.5.17:
     resolution: {integrity: sha512-LbHV3xPN9BeljML+Xctq4lbz2lVHCR6DtbpTf5XIO6gugpXUN49j2QQPcMj086r9+AkJ0FfUT8xjulKKBkkr9g==}
     peerDependencies:
@@ -5491,6 +5500,11 @@ snapshots:
   vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)):
     dependencies:
       '@vue/devtools-api': 6.6.4
+      vue: 3.5.17(typescript@5.8.3)
+
+  vue3-apexcharts@1.8.0(apexcharts@3.49.1)(vue@3.5.17(typescript@5.8.3)):
+    dependencies:
+      apexcharts: 3.49.1
       vue: 3.5.17(typescript@5.8.3)
 
   vue@3.5.17(typescript@5.8.3):

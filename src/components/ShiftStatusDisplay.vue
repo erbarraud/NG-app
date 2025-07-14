@@ -2,20 +2,24 @@
   <Card>
     <CardHeader>
       <CardTitle>Shift Status</CardTitle>
-      <CardDescription>Current production shift overview.</CardDescription>
+      <CardDescription>Live production overview</CardDescription>
     </CardHeader>
-    <CardContent class="grid grid-cols-2 gap-4">
-      <div class="flex flex-col items-center p-4 bg-muted rounded-lg">
-        <span class="text-sm font-medium text-muted-foreground">Boards/Hour</span>
-        <span class="text-3xl font-bold">1,234</span>
+    <CardContent class="space-y-4">
+      <div class="flex justify-between items-center">
+        <span class="text-muted-foreground">Current Shift</span>
+        <span class="font-semibold">Day Shift (6am - 6pm)</span>
       </div>
-      <div class="flex flex-col items-center p-4 bg-muted rounded-lg">
-        <span class="text-sm font-medium text-muted-foreground">Uptime</span>
-        <span class="text-3xl font-bold text-green-500">98.7%</span>
+      <div class="flex justify-between items-center">
+        <span class="text-muted-foreground">Line Speed</span>
+        <span class="font-semibold">180 boards/min</span>
       </div>
-      <div class="col-span-2">
-        <p class="text-sm"><span class="font-semibold">Current Order:</span> #ORD-2024-0012</p>
-        <p class="text-sm"><span class="font-semibold">Shift:</span> Day Shift (6:00 AM - 6:00 PM)</p>
+      <div class="flex justify-between items-center">
+        <span class="text-muted-foreground">Uptime</span>
+        <span class="font-semibold text-green-500">98.7%</span>
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-muted-foreground">Total Boards</span>
+        <span class="font-semibold">45,721</span>
       </div>
     </CardContent>
   </Card>

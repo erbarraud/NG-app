@@ -3,6 +3,7 @@
     <slot />
   </td>
 </template>
+
 <script setup>
 import { cn } from '@/lib/utils'
 </script>

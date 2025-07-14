@@ -23,7 +23,7 @@ import {
 } from 'lucide-vue-next'
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Orders', href: '/orders', icon: Package },
   { name: 'Line Check', href: '/line-check', icon: CheckSquare },
   { name: 'Monitor', href: '/monitor', icon: Monitor },

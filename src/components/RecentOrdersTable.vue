@@ -1,27 +1,27 @@
 <template>
-  <Card>
+  <Card class="lg:col-span-2">
     <CardHeader>
       <CardTitle>Recent Orders</CardTitle>
-      <CardDescription>A list of the most recent production orders.</CardDescription>
+      <CardDescription>A summary of the most recent production orders.</CardDescription>
     </CardHeader>
     <CardContent>
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Order ID</TableHead>
+            <TableHead>Customer</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Quantity</TableHead>
-            <TableHead>Due Date</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow v-for="order in orders" :key="order.id">
             <TableCell class="font-medium">{{ order.id }}</TableCell>
+            <TableCell>{{ order.customer }}</TableCell>
             <TableCell>
-              <Badge :variant="order.status === 'Completed' ? 'default' : 'secondary'">{{ order.status }}</Badge>
+              <Badge :variant="getStatusVariant(order.status)">{{ order.status }}</Badge>
             </TableCell>
             <TableCell>{{ order.quantity }}</TableCell>
-            <TableCell>{{ order.dueDate }}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -45,9 +45,15 @@ import TableCell from '@/components/ui/TableCell.vue'
 import Badge from '@/components/ui/Badge.vue'
 
 const orders = ref([
-  { id: '#ORD-2024-0012', status: 'Running', quantity: 5000, dueDate: '2024-07-15' },
-  { id: '#ORD-2024-0011', status: 'Completed', quantity: 2500, dueDate: '2024-07-14' },
-  { id: '#ORD-2024-0010', status: 'Completed', quantity: 7000, dueDate: '2024-07-13' },
-  { id: '#ORD-2024-0009', status: 'Completed', quantity: 3200, dueDate: '2024-07-12' },
+  { id: 'ORD-001', customer: 'Lumber Co.', status: 'Completed', quantity: 1200 },
+  { id: 'ORD-002', customer: 'Builders Inc.', status: 'In Progress', quantity: 800 },
+  { id: 'ORD-003', customer: 'Fine Woods', status: 'Pending', quantity: 2500 },
+  { id: 'ORD-004', customer: 'Lumber Co.', status: 'Completed', quantity: 1500 },
 ])
+
+const getStatusVariant = (status) => {
+  if (status === 'Completed') return 'success'
+  if (status === 'In Progress') return 'warning'
+  return 'default'
+}
 </script>

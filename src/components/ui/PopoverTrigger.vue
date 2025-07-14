@@ -1,6 +1,6 @@
 <template>
   <HPopoverButton as="template">
-    <slot></slot>
+    <slot />
   </HPopoverButton>
 </template>
 

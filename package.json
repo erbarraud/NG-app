@@ -77,8 +77,9 @@
     "uuid": "latest",
     "vaul": "latest",
     "vue": "latest",
-    "vue-apexcharts": "latest",
+    "vue-apexcharts": "^1.6.2",
     "vue-router": "latest",
+    "vue3-apexcharts": "latest",
     "yaml": "latest"
   },
   "devDependencies": {

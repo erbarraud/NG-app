@@ -3,9 +3,9 @@
     <template #header>
       <h1 class="text-2xl font-bold text-foreground">Line Check</h1>
     </template>
-    <div class="p-4">
-      <h2 class="text-xl">Line Check Page</h2>
-      <p>This is a placeholder for the Line Check page content.</p>
+    <div class="p-4 bg-card rounded-lg shadow-sm">
+      <h2 class="text-xl font-semibold">Line Check Page</h2>
+      <p class="text-muted-foreground mt-2">This is a placeholder for the Line Check page content. Live monitoring of the production line will be available here.</p>
     </div>
   </DashboardShell>
 </template>

@@ -1,34 +1,37 @@
 "use client"
 
-import { ref, watch } from "vue"
-
-const theme = ref("light")
+import { ref, onMounted } from "vue"
 
 export function useTheme() {
+  const theme = ref("light")
+
+  const applyTheme = (themeValue) => {
+    if (themeValue === "dark") {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+    localStorage.setItem("theme", themeValue)
+    theme.value = themeValue
+  }
+
   const toggleTheme = () => {
-    theme.value = theme.value === "light" ? "dark" : "light"
+    applyTheme(theme.value === "light" ? "dark" : "light")
   }
 
-  const setTheme = (newTheme) => {
-    theme.value = newTheme
-  }
-
-  // Apply theme to document
-  watch(
-    theme,
-    (newTheme) => {
-      if (newTheme === "dark") {
-        document.documentElement.classList.add("dark")
-      } else {
-        document.documentElement.classList.remove("dark")
-      }
-    },
-    { immediate: true },
-  )
+  onMounted(() => {
+    const savedTheme = localStorage.getItem("theme")
+    if (savedTheme && (savedTheme === "dark" || savedTheme === "light")) {
+      applyTheme(savedTheme)
+    } else {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+      applyTheme(prefersDark ? "dark" : "light")
+    }
+  })
 
   return {
     theme,
     toggleTheme,
-    setTheme,
+    setTheme: applyTheme,
   }
 }

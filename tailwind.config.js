@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,vue}",
-    "./components/**/*.{js,vue}",
-    "./app/**/*.{js,vue}",
-    "./src/**/*.{js,vue}",
+    "./pages/**/*.{ts,tsx,vue}",
+    "./components/**/*.{ts,tsx,vue}",
+    "./app/**/*.{ts,tsx,vue}",
+    "./src/**/*.{ts,tsx,vue}",
     "./index.html",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -75,5 +75,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }

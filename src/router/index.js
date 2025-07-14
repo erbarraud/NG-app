@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router"
 
 const routes = [
-  { path: "/", name: "Dashboard", component: () => import("@/views/Dashboard.vue") },
+  { path: "/", name: "Login", component: () => import("@/views/Login.vue") },
+  { path: "/dashboard", name: "Dashboard", component: () => import("@/views/Dashboard.vue") },
   { path: "/orders", name: "Orders", component: () => import("@/views/Orders.vue") },
   { path: "/line-check", name: "LineCheck", component: () => import("@/views/LineCheck.vue") },
   { path: "/monitor", name: "Monitor", component: () => import("@/views/Monitor.vue") },

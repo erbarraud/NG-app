@@ -6,42 +6,25 @@ export function useTheme() {
   const theme = ref("light")
 
   const applyTheme = (newTheme) => {
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-    try {
-      localStorage.setItem("theme", newTheme)
-    } catch (e) {
-      console.warn("Could not save theme to localStorage.", e)
-    }
+    const root = window.document.documentElement
+    root.classList.remove("light", "dark")
+    root.classList.add(newTheme)
+    localStorage.setItem("theme", newTheme)
     theme.value = newTheme
   }
 
   const toggleTheme = () => {
-    applyTheme(theme.value === "light" ? "dark" : "light")
+    const newTheme = theme.value === "light" ? "dark" : "light"
+    applyTheme(newTheme)
   }
 
   onMounted(() => {
-    let savedTheme = "light"
-    try {
-      savedTheme = localStorage.getItem("theme")
-    } catch (e) {
-      console.warn("Could not read theme from localStorage.", e)
-    }
-
-    if (savedTheme && (savedTheme === "dark" || savedTheme === "light")) {
-      applyTheme(savedTheme)
-    } else {
-      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-      applyTheme(prefersDark ? "dark" : "light")
-    }
+    const savedTheme = localStorage.getItem("theme") || "light"
+    applyTheme(savedTheme)
   })
 
   return {
     theme,
     toggleTheme,
-    setTheme: applyTheme,
   }
 }

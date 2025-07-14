@@ -1,8 +1,10 @@
 <template>
   <DashboardShell>
-    <div class="p-4">
+    <template #header>
       <h1 class="text-2xl font-bold">User Management</h1>
-      <p class="mt-2 text-muted-foreground">Manage users and their permissions.</p>
+    </template>
+    <div class="p-4">
+      <p class="text-muted-foreground">Manage users and their permissions. This page is under construction.</p>
     </div>
   </DashboardShell>
 </template>

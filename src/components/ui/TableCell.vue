@@ -1,7 +1,7 @@
 <template>
-  <div :class="cn('flex flex-col space-y-1.5 p-6', $attrs.class)">
+  <td :class="cn('p-4 align-middle [&:has([role=checkbox])]:pr-0', $attrs.class)">
     <slot />
-  </div>
+  </td>
 </template>
 <script setup>
 import { cn } from '@/lib/utils'

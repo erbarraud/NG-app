@@ -1,8 +1,10 @@
 <template>
   <DashboardShell>
-    <div class="p-4">
+    <template #header>
       <h1 class="text-2xl font-bold">Board Finder</h1>
-      <p class="mt-2 text-muted-foreground">Search for specific boards by ID or criteria.</p>
+    </template>
+    <div class="p-4">
+      <p class="text-muted-foreground">Search for specific boards by ID or criteria. This page is under construction.</p>
     </div>
   </DashboardShell>
 </template>

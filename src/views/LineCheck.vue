@@ -1,8 +1,10 @@
 <template>
   <DashboardShell>
-    <div class="p-4">
+    <template #header>
       <h1 class="text-2xl font-bold">Line Check</h1>
-      <p class="mt-2 text-muted-foreground">Monitor the production line status.</p>
+    </template>
+    <div class="p-4">
+      <p class="text-muted-foreground">Monitor the production line status. This page is under construction.</p>
     </div>
   </DashboardShell>
 </template>

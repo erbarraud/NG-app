@@ -11,4 +11,6 @@ import { useTheme } from '@/composables/useTheme'
 // Initialize and provide theme for the whole app
 const { theme, toggleTheme } = useTheme()
 provide('theme', { theme, toggleTheme })
+
+// The root component simply renders the current route's component.
 </script>

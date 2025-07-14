@@ -1,7 +1,7 @@
 <template>
-  <div :class="cn('flex flex-col space-y-1.5 p-6', $attrs.class)">
+  <tbody :class="cn('[&_tr:last-child]:border-0', $attrs.class)">
     <slot />
-  </div>
+  </tbody>
 </template>
 <script setup>
 import { cn } from '@/lib/utils'

@@ -1,7 +1,11 @@
 <template>
   <DashboardShell>
+    <template #header>
+      <div class="flex items-center space-x-2">
+        <h1 class="text-2xl font-bold">Dashboard</h1>
+      </div>
+    </template>
     <div class="space-y-6">
-      <h1 class="text-3xl font-bold">Dashboard</h1>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="lg:col-span-1">
           <ShiftStatusDisplay />

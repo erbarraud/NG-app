@@ -26,5 +26,5 @@
 </template>
 
 <script setup>
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card.vue'
 </script>

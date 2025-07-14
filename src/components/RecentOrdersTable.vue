@@ -34,7 +34,11 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card.vue'
+import Card from '@/components/ui/Card.vue'
+import CardHeader from '@/components/ui/CardHeader.vue'
+import CardTitle from '@/components/ui/CardTitle.vue'
+import CardDescription from '@/components/ui/CardDescription.vue'
+import CardContent from '@/components/ui/CardContent.vue'
 import Badge from '@/components/ui/Badge.vue'
 
 const orders = ref([

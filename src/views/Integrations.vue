@@ -1,13 +1,15 @@
 <template>
   <DashboardShell>
     <template #header>
-      <h1 class="text-2xl font-bold">Integrations</h1>
+      <h1 class="text-2xl font-bold text-foreground">Integrations</h1>
     </template>
     <div class="p-4">
-      <p class="text-muted-foreground">Connect with other systems and services. This page is under construction.</p>
+      <h2 class="text-xl">Integrations Page</h2>
+      <p>This is a placeholder for the Integrations page content.</p>
     </div>
   </DashboardShell>
 </template>
+
 <script setup>
 import DashboardShell from '@/components/DashboardShell.vue';
 </script>

@@ -1,13 +1,15 @@
 <template>
   <DashboardShell>
     <template #header>
-      <h1 class="text-2xl font-bold">Orders</h1>
+      <h1 class="text-2xl font-bold text-foreground">Orders</h1>
     </template>
     <div class="p-4">
-      <p class="text-muted-foreground">Manage and view production orders. This page is under construction.</p>
+      <h2 class="text-xl">Orders Page</h2>
+      <p>This is a placeholder for the Orders page content.</p>
     </div>
   </DashboardShell>
 </template>
+
 <script setup>
 import DashboardShell from '@/components/DashboardShell.vue';
 </script>
